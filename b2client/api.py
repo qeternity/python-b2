@@ -80,15 +80,14 @@ class B2(object):
         else:
             raise B2APIException('Could not get B2 upload url')
 
-    def _upload(self, bucket_id, filename, filehash, data, content_type=None, headers=None):
+    def _upload(self, bucket_id, filename, filehash, data, content_type=None):
         upload_url, auth_token = self.get_upload_url(bucket_id)
-        base_headers = {
+        headers = {
             'Authorization': auth_token,
             'X-Bz-File-Name': filename,
             'Content-Type': content_type or 'b2client/x-auto',
             'X-Bz-Content-Sha1': filehash,
         }
-        headers = {**base_headers, **(headers or {})}
         r = requests.post(upload_url, headers=headers, data=data)
         if r.status_code != 200:
             print(r.status_code)
