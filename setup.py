@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='python_b2',
+    name='b2client',
     version='0.1',
     packages=find_packages(),
     license=open("LICENSE").read(),

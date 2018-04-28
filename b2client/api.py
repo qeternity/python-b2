@@ -85,7 +85,7 @@ class B2(object):
         base_headers = {
             'Authorization': auth_token,
             'X-Bz-File-Name': filename,
-            'Content-Type': content_type or 'python_b2/x-auto',
+            'Content-Type': content_type or 'b2client/x-auto',
             'X-Bz-Content-Sha1': filehash,
         }
         headers = {**base_headers, **(headers or {})}
